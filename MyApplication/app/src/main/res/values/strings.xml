@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="text_button_intent">Start Second</string>
+    <string name="linearLayout">LINEA LAYOUT</string>
+    <string name="relativeLayout">RELATIVE LAYOUT</string>
+    <string name="tableLayout">TABLE LAYOUT</string>
+    <string name="textview">TEXTVIEW</string>
+    <string name="edittext">EDITTEXT</string>
+    <string name="checkbox">CHECKBOX</string>
+    <string name="radiobutton">RADIOBUTTON</string>
+    <string name="objeto_spannable">OBJETO SPANNABLE</string>
+    <string name="buttons">BUTTONS</string>
+    <string name="imageview">IMAGEVIEW</string>
+    <string name="spinner">SPINNER</string>
+    <string name="listview">LISTVIEW</string>
+    <string name="gridview">GRIDVIEW</string>
+    <string name="conectar">Conectar</string>
+    <string name="olvido_pass">¿Olvidaste tu contraseña?</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="Empleados">empleados</string>
+    <string name="gridLayout">GRID LAYOUT</string>
+    <string name="async">ASYNC</string>
+</resources>

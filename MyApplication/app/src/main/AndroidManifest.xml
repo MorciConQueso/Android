@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrador.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".TextView_Activity" />
+        <activity android:name=".EditText_Activity" />
+        <activity android:name=".CheckBox_Activity" />
+        <activity android:name=".RadioButton_Activity" />
+        <activity android:name=".Spannable_Activity" />
+        <activity android:name=".Buttons_Activity" />
+        <activity android:name=".ImageView_Activity" />
+        <activity android:name=".Spinner_Activity" />
+        <activity android:name=".ListView_Activity" />
+        <activity android:name=".GridLayout_Activity" />
+        <activity android:name=".LinearLayout_Activity" />
+        <activity android:name=".RelativeLayout_Activity" />
+        <activity android:name=".TableLayout_Activity" />
+        <activity android:name=".Lista_Empleados" />
+        <activity android:name=".GridView_Activity" />
+        <activity android:name=".Async_Activity"></activity>
+    </application>
+
+</manifest>

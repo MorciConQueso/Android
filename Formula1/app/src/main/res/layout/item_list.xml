@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3">
+
+
+    <TextView
+        android:id="@+id/posicion"
+        android:layout_weight="0.33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:text="1"/>
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_weight="1"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/posicion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PEPE"/>
+
+        <ImageView
+            android:id="@+id/bandera"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_launcher"
+            />
+
+</LinearLayout>
