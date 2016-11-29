@@ -97,18 +97,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String codigo = code.getText().toString();
 
-                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
-                db.beginTransaction();
-                try{
-                    //db.execSQL("DELETE FROM Usuarios WHERE code=?"+codigo);
-                    db.delete("Usuarios","code=?",new String[]{codigo});
-                    db.setTransactionSuccessful();
-                }catch(SQLException ex){
-                    ex.printStackTrace();
-                }finally{
-                    db.endTransaction();
-                    db.close();
-                }
+                ConnectionDB.delete(getApplicationContext(),"Usuarios","codigo=?",new String[]{codigo});
+//                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
+//                db.beginTransaction();
+//                try{
+//                    //db.execSQL("DELETE FROM Usuarios WHERE code=?"+codigo);
+//                    db.delete("Usuarios","code=?",new String[]{codigo});
+//                    db.setTransactionSuccessful();
+//                }catch(SQLException ex){
+//                    ex.printStackTrace();
+//                }finally{
+//                    db.endTransaction();
+//                    db.close();
+//                }
             }
         });
 

@@ -57,4 +57,20 @@ public class ConnectionDB {
         }
         return cantidadUpdate;
     }
+
+    public static long delete(Context context, String table,String where, String[] whereArgs){
+        long cantidadDeletes = 0;
+        SQLiteDatabase db = getConnectionWrite(context);
+        db.beginTransaction();
+        try{
+            cantidadDeletes = db.delete(table,where,whereArgs);
+            db.setTransactionSuccessful();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }finally{
+            db.endTransaction();
+            db.close();
+        }
+        return cantidadDeletes;
+    }
 }
