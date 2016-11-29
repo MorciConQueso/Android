@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.sql.SQLInput;
+
 public class MainActivity extends AppCompatActivity {
     EditText name;
     EditText code;
@@ -81,6 +83,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
         buttonDelete = (Button) findViewById(R.id.borrar);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String codigo = code.getText().toString();
+
+                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
+                db.beginTransaction();
+                try{
+                    //db.execSQL("DELETE FROM Usuarios WHERE code=?"+codigo);
+                    db.delete("Usuarios","code=?",new String[]{codigo});
+                    db.setTransactionSuccessful();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                }finally{
+                    db.endTransaction();
+                    db.close();
+                }
+            }
+        });
+
         buttonQuery = (Button) findViewById(R.id.consulta);
         buttonQuery.setOnClickListener(new View.OnClickListener() {
             @Override
