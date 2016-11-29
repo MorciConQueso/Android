@@ -14,5 +14,12 @@ public class ConnectionDB {
     public static SQLiteDatabase getConnectionQuery(Context context){
         DBHelper database = new DBHelper(context,DB_NAME,null,VERSION);
         SQLiteDatabase db = database.getReadableDatabase();
+        return db;
+    }
+
+    public static SQLiteDatabase getConnectionWrite (Context context){
+        DBHelper database = new DBHelper(context, DB_NAME,null,VERSION);
+        SQLiteDatabase db = database.getWritableDatabase();
+        return db;
     }
 }
