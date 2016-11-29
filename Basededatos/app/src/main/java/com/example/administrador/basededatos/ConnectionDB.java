@@ -41,4 +41,20 @@ public class ConnectionDB {
         }
         return cantidadInserts;
     }
+
+    public static int update(Context context, String table,ContentValues values, String where,String[] whereArgs){
+        int cantidadUpdate = 0;
+        SQLiteDatabase db = getConnectionWrite(context);
+        db.beginTransaction();
+        try{
+            cantidadUpdate = db.update(table,values,where,whereArgs);
+            db.setTransactionSuccessful();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }finally{
+            db.endTransaction();
+            db.close();
+        }
+        return cantidadUpdate;
+    }
 }

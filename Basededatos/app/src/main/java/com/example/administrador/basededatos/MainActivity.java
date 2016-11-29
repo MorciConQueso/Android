@@ -69,21 +69,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nombre = name.getText().toString();
                 String codigo = code.getText().toString();
-
-                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
-                db.beginTransaction();
-                try{
-                    db.execSQL("UPDATE Usuarios SET nombre = '"+nombre+"' WHERE codigo = "+codigo);
-                    ContentValues values = new ContentValues();
+                ContentValues values = new ContentValues();
                     values.put("nombre", nombre);
-                    db.update("Usuarios",values,"codigo=?",new String[]{codigo});
-                    db.setTransactionSuccessful();
-                }catch(SQLException ex){
-                    ex.printStackTrace();
-                }finally{
-                    db.endTransaction();
-                    db.close();
-                }
+
+                ConnectionDB.update(getApplicationContext(),"Usuarios",values,"codigo=?",new String[]{codigo});
+
+//                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
+//                db.beginTransaction();
+//                try{
+//                    db.execSQL("UPDATE Usuarios SET nombre = '"+nombre+"' WHERE codigo = "+codigo);
+//                    ContentValues values = new ContentValues();
+//                    values.put("nombre", nombre);
+//                    db.update("Usuarios",values,"codigo=?",new String[]{codigo});
+//                    db.setTransactionSuccessful();
+//                }catch(SQLException ex){
+//                    ex.printStackTrace();
+//                }finally{
+//                    db.endTransaction();
+//                    db.close();
+//                }
             }
         });
 
