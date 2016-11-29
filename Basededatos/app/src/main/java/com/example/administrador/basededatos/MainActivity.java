@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     values.put("nombre",nombre);
                     values.put("codigo",codigo);
                     db.insert("Usuarios",null,values);
+                    db.setTransactionSuccessful();
                 }catch (SQLException ex){
                     ex.printStackTrace();
                 }finally{
@@ -59,11 +60,37 @@ public class MainActivity extends AppCompatActivity {
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String nombre = name.getText().toString();
+                String codigo = code.getText().toString();
+
+                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
+                db.beginTransaction();
+                try{
+                    db.execSQL("UPDATE Usuarios SET nombre = '"+nombre+"' WHERE codigo = "+codigo);
+                    ContentValues values = new ContentValues();
+                    values.put("nombre", nombre);
+                    db.update("Usuarios",values,"codigo=?",new String[]{codigo});
+                    db.setTransactionSuccessful();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                }finally{
+                    db.endTransaction();
+                    db.close();
+                }
+            }
+        });
+
+        buttonDelete = (Button) findViewById(R.id.borrar);
+        buttonQuery = (Button) findViewById(R.id.consulta);
+        buttonQuery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ecodigo = code.getText().toString();
                 String data = "";
                 SQLiteDatabase db = ConnectionDB.getConnectionQuery(getApplicationContext());
                 //Una forma
                 //Cursor cursor = db.rawQuery("SELECT * FROM Usuarios", null);
-                Cursor cursor = db.query("Usuarios", new String[]{"nombre","codigo"},null,null,null,null,null);
+                Cursor cursor = db.query("Usuarios", new String[]{"nombre","codigo"},"codigo=?",new String[]{ecodigo},null,null,null);
 
                 int columnName = cursor.getColumnIndex("nombre");
                 int columnCode = cursor.getColumnIndex("codigo");
@@ -73,11 +100,10 @@ public class MainActivity extends AppCompatActivity {
                     data += nombre +" "+ codigo +"\n";
                 }
                 text.setText(data);
+                db.close();
             }
         });
 
-        buttonDelete = (Button) findViewById(R.id.borrar);
-        buttonQuery = (Button) findViewById(R.id.consulta);
         text = (TextView) findViewById(R.id.textView);
     }
 
