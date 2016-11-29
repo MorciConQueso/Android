@@ -36,25 +36,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nombre = name.getText().toString();
                 String codigo = code.getText().toString();
-
-                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
-                db.beginTransaction();
-
-                try{
-                    //Una forma
-                    //db.execSQL("INSERT INTO Usuarios (nombre, codigo) VALUE ('"+nombre+"',"+codigo+")");
-                    ContentValues values = new ContentValues();
+                ContentValues values = new ContentValues();
                     values.put("nombre",nombre);
                     values.put("codigo",codigo);
-                    db.insert("Usuarios",null,values);
-                    db.setTransactionSuccessful();
-                }catch (SQLException ex){
-                    ex.printStackTrace();
-                }finally{
-                    db.endTransaction();
-                    db.close();
-                }
 
+                ConnectionDB.insert(getApplicationContext(),"Usuarios",values);
+//
+//                SQLiteDatabase db = ConnectionDB.getConnectionWrite(getApplicationContext());
+//                db.beginTransaction();
+//
+//                try{
+//                    //Una forma
+//                    //db.execSQL("INSERT INTO Usuarios (nombre, codigo) VALUE ('"+nombre+"',"+codigo+")");
+//                    ContentValues values = new ContentValues();
+//                    values.put("nombre",nombre);
+//                    values.put("codigo",codigo);
+//                    db.insert("Usuarios",null,values);
+//                    db.setTransactionSuccessful();
+//                }catch (SQLException ex){
+//                    ex.printStackTrace();
+//                }finally{
+//                    db.endTransaction();
+//                    db.close();
+//                }
+//
             }
         });
 
